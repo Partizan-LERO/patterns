@@ -28,7 +28,7 @@
             <li><a href="bridge.php">Bridge</a></li>
             <li><a href="composite.php">Composite</a></li>
             <li><a href="datamapper.php">Data Mapper</a></li>
-            <li><a href=""></a></li>
+            <li><a href="decorator.php">Decorator</a></li>
             <li><a href=""></a></li>
             <li><a href=""></a></li>
             <li><a href=""></a></li>
