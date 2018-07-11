@@ -31,8 +31,8 @@
             <li><a href="decorator.php">Decorator</a></li>
             <li><a href="dependencyinjection.php">Dependency Injection</a></li>
             <li><a href="facade.php">Facade</a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
+            <li><a href="querybuilder.php">Fluent Interface + Builder(Query Builder)</a></li>
+            <li><a href="flyweight.php">Flyweight</a></li>
             <li><a href=""></a></li>
         </ul>
     </li>

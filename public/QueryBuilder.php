@@ -15,6 +15,11 @@ class MySqlQueryBuilder implements QueryBuilder
 {
     public $query;
     public $sql;
+    public $fields;
+    public $from;
+    public $where;
+    public $limit;
+    public $groupByFields;
 
     protected function reset()
     {
@@ -24,38 +29,54 @@ class MySqlQueryBuilder implements QueryBuilder
     public function select($columns = ["*"])
     {
         $this->reset();
-        $this->sql = "SELECT  " . implode(', ', $columns) . ' ';
+        $this->fields = $columns;
         return $this;
     }
 
     public function from($table)
     {
-        $this->sql .= 'FROM ' . $table;
+        $this->from = $table;
         return $this;
     }
 
     public function where($where)
     {
-        $this->sql .= $where;
+        $this->where = $where;
         return $this;
     }
 
     public function limit($limit)
     {
-        $this->sql .= ' LIMIT ' . $limit;
+        $this->limit = $limit;
         return $this;
     }
 
     public function groupBy(array $fields)
     {
-        $this->sql .= ' GROUP BY ' . implode(', ', $fields);
+        $this->groupByFields = $fields;
         return $this;
     }
 
-
     public function find()
     {
-        echo $this->sql;
+        $this->query = sprintf(
+            'SELECT %s FROM %s',
+            join(', ', $this->fields),
+            $this->from
+        );
+
+        if ($this->where) {
+         $this->query .= ' WHERE '. $this->where;
+        }
+
+        if ($this->groupByFields) {
+            $this->query .= ' GROUP BY (' . join(', ', $this->groupByFields) . ')';
+        }
+
+        if ($this->limit) {
+            $this->query .= ' LIMIT '. $this->limit;
+        }
+
         return $this->query;
     }
 
@@ -70,46 +91,75 @@ class PostgresSqlQueryBuilder implements QueryBuilder
 {
     public $query;
     public $sql;
+    public $fields;
+    public $from;
+    public $where;
+    public $limit;
+    public $groupByFields;
+    public $offset = 0;
 
     protected function reset()
     {
         $this->query = new \stdClass();
     }
 
-    public function select($columns = ['*'])
+    public function select($columns = ["*"])
     {
         $this->reset();
-        $this->sql = "SELECT " . implode(', ', $columns) . ' ';
+        $this->fields = $columns;
         return $this;
     }
 
     public function from($table)
     {
-        $this->sql .= 'FROM ' . $table;
+        $this->from = $table;
         return $this;
     }
 
     public function where($where)
     {
-        $this->sql .= ' WHERE ' . $where;
+        $this->where = $where;
         return $this;
     }
 
     public function limit($limit)
     {
-        $this->sql .= " LIMIT {$limit} OFFSET 0";
+        $this->limit = $limit;
         return $this;
     }
 
     public function groupBy(array $fields)
     {
-        $this->sql .= ' GROUP BY ' . implode(', ', $fields);
+        $this->groupByFields = $fields;
+        return $this;
+    }
+
+    public function offset($offset)
+    {
+        $this->offset = $offset;
         return $this;
     }
 
     public function find()
     {
-        echo $this->sql;
+        $this->query = sprintf(
+            'SELECT %s FROM %s',
+            join(', ', $this->fields),
+            $this->from
+        );
+
+        if ($this->where) {
+            $this->query .= ' WHERE '. $this->where;
+        }
+
+        if ($this->groupByFields) {
+            $this->query .= ' GROUP BY (' . join(', ', $this->groupByFields) . ')';
+        }
+
+        if ($this->limit) {
+            $this->query .= ' LIMIT '. $this->limit . ' OFFSET ' . $this->offset;
+        }
+
         return $this->query;
     }
 
@@ -129,6 +179,7 @@ $qb = (new PostgresSqlQueryBuilder())
     ->limit(1)
     ->find();
 
+echo $qb;
 echo "<br>";
 
 
@@ -139,6 +190,7 @@ $qb2 = (new MySqlQueryBuilder())
     ->groupBy(['user_id'])
     ->find();
 
+echo $qb2;
 echo "<br>";
 
 
