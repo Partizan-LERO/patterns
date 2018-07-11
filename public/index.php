@@ -29,8 +29,8 @@
             <li><a href="composite.php">Composite</a></li>
             <li><a href="datamapper.php">Data Mapper</a></li>
             <li><a href="decorator.php">Decorator</a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
+            <li><a href="dependencyinjection.php">Dependency Injection</a></li>
+            <li><a href="facade.php">Facade</a></li>
             <li><a href=""></a></li>
             <li><a href=""></a></li>
             <li><a href=""></a></li>
