@@ -1,10 +1,10 @@
 <?php
-interface Theme
+interface ThemeInterface
 {
     public function getColor();
 }
 
-class DarkTheme implements Theme
+class DarkTheme implements ThemeInTerface
 {
     public function getColor()
     {
@@ -12,7 +12,7 @@ class DarkTheme implements Theme
     }
 }
 
-class RedTheme implements Theme
+class RedTheme implements ThemeInTerface
 {
     public function getColor()
     {
@@ -20,7 +20,7 @@ class RedTheme implements Theme
     }
 }
 
-class LightTheme implements Theme
+class LightTheme implements ThemeInterface
 {
     public function getColor()
     {
@@ -28,17 +28,17 @@ class LightTheme implements Theme
     }
 }
 
-interface Page
+interface PageInterface
 {
     public function render();
 }
 
-class MainPage implements Page
+class MainPage implements PageInterface
 {
     public $theme;
     public $title = 'Main page';
 
-    public function __construct(Theme $theme)
+    public function __construct(ThemeInterface $theme)
     {
         return $this->theme = $theme;
     }
@@ -49,12 +49,12 @@ class MainPage implements Page
     }
 }
 
-class ContactsPage implements Page
+class ContactsPage implements PageInterface
 {
     public $theme;
     public $title = 'Contacts page';
 
-    public function __construct(Theme $theme)
+    public function __construct(ThemeInterface $theme)
     {
         return $this->theme = $theme;
     }

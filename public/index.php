@@ -32,8 +32,8 @@
             <li><a href="dependencyinjection.php">Dependency Injection</a></li>
             <li><a href="facade.php">Facade</a></li>
             <li><a href="querybuilder.php">Fluent Interface + Builder(Query Builder)</a></li>
-            <li><a href="flyweight.php">Flyweight</a></li>
-            <li><a href=""></a></li>
+            <li><strong>Flyweight</strong> is used for minimising memory usage by sharing data with other objects. Memory limit is not popular in PHP applications, so it doesn't make sense to implement this pattern here.</li>
+            <li><a href="proxy.php">Proxy</a></li>
         </ul>
     </li>
     <li>
