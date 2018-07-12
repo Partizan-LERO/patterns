@@ -39,16 +39,9 @@
     <li>
         Behavioral
         <ul>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
+            <li><a href="chainofresponsibility.php">Chain of responsibility</a></li>
+            <li><a href="strategy.php">Strategy</a></li>
+
         </ul>
     </li>
 </ul>
