@@ -46,5 +46,7 @@ class PublicTransportStrategy implements RouteStrategyInterface
 
 
 $route = (new Navigator(new AutoStrategy()))->buildRoute('Kazan', 'Amsterdam');
+echo "<br>";
 $route = (new Navigator(new PublicTransportStrategy()))->buildRoute('Amsterdam Airport Schiphol', 'Amsterdam Science Park railway station');
+echo "<br>";
 $route = (new Navigator(new WalkingStrategy()))->buildRoute('Amsterdam Science Park railway station', 'Universiteit van Amsterdam');

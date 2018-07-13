@@ -40,6 +40,10 @@
         Behavioral
         <ul>
             <li><a href="chainofresponsibility.php">Chain of responsibility</a></li>
+            <li><a href="observer.php">Observer</a></li>
+            <li><strong>State pattern</strong> is really not popular in real PHP applications.
+                It is similar to Strategy pattern but there is a difference: states knows about one another and are able to change it from the inside.
+                Strategies doesn't know about one another and can't change the strategy.</li>
             <li><a href="strategy.php">Strategy</a></li>
 
         </ul>
