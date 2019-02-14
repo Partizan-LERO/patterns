@@ -9,7 +9,7 @@ class Pizza
     }
 }
 
-interface PizzaBuilderInterfase
+interface PizzaBuilderInterface
 {
     public function addPepperoni();
     public function addCheese();
@@ -17,7 +17,7 @@ interface PizzaBuilderInterfase
     public function build();
 }
 
-class ItalianPizzaBuilder implements PizzaBuilderInterfase
+class ItalianPizzaBuilder implements PizzaBuilderInterface
 {
     public $pizza;
 
@@ -52,7 +52,7 @@ class ItalianPizzaBuilder implements PizzaBuilderInterfase
 }
 
 
-class AmericanPizzaBuilder implements PizzaBuilderInterfase
+class AmericanPizzaBuilder implements PizzaBuilderInterface
 {
     public $pizza;
 
@@ -88,7 +88,7 @@ class AmericanPizzaBuilder implements PizzaBuilderInterfase
 
 class PizzaDirector
 {
-    public function build(PizzaBuilderInterfase $builder)
+    public function build(PizzaBuilderInterface $builder)
     {
         $builder->addPepperoni();
         $builder->addCheese();
