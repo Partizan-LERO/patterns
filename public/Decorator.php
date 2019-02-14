@@ -33,8 +33,7 @@ class DeluxeEquipmentCar extends EquipmentCarDecorator
 {
     public function getCost()
     {
-        $cost = $this->car->getCost() + 10000;
-        return $cost;
+        return $this->car->getCost() + 10000;
     }
 
     public function getEquipment()
@@ -47,7 +46,7 @@ class AdditionalEquipmentCar extends EquipmentCarDecorator
 {
     public function getCost()
     {
-        return $cost = $this->car->getCost() + 5000;
+        return $this->car->getCost() + 5000;
     }
 
     public function getEquipment()
