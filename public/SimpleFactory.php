@@ -2,18 +2,20 @@
 
 class CarFactory
 {
-    public static function build($type = '') {
-             
-        if ($type == '') {
-            throw new Exception('Invalid Car Type.');
+
+    /**
+     * @param $type
+     * @param $model
+     * @return mixed
+     * @throws Exception
+     */
+    public static function build($type, $model) {
+        $className = ucfirst($type);
+
+        if(class_exists($className)) {
+            return new $className($model);
         } else {
-            $className = ucfirst($type);
- 
-            if(class_exists($className)) {
-                return new $className();
-            } else {
-                throw new Exception('Car type not found.');
-            }
+            throw new Exception('Car type not found.');
         }
     }
 }
@@ -51,9 +53,9 @@ class Vaz extends Car
 }
 
 
-$ferrari = (new CarFactory)->build('ferrari');
-$bmw =  (new CarFactory)->build('bmw');
+$ferrari = CarFactory::build('ferrari', 'model');
+$bmw =  CarFactory::build('vaz', 'x6');
 
-echo $ferrari->model;
-echo "<br>";
-echo $bmw->model;
+echo $ferrari->model . "\n";
+
+echo $bmw->model . "\n";
