@@ -2,9 +2,19 @@
 
 class CarFactory
 {
-    public function make($name)
-    {
-        return new Ferrari($name);
+    public static function build($type = '') {
+             
+        if ($type == '') {
+            throw new Exception('Invalid Car Type.');
+        } else {
+            $className = ucfirst($type);
+ 
+            if(class_exists($className)) {
+                return new $className();
+            } else {
+                throw new Exception('Car type not found.');
+            }
+        }
     }
 }
 
@@ -41,8 +51,8 @@ class Vaz extends Car
 }
 
 
-$ferrari = (new CarFactory)->make('Ferrari');
-$bmw =  (new CarFactory)->make('BMW');
+$ferrari = (new CarFactory)->build('ferrari');
+$bmw =  (new CarFactory)->build('bmw');
 
 echo $ferrari->model;
 echo "<br>";
