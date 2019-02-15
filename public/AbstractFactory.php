@@ -1,40 +1,5 @@
 <?php
 
-abstract class AbstractFactory
-{
-    abstract public function createText($content);
-    abstract public function createFormatter();
-}
-
-
-class JsonFactory extends AbstractFactory
-{
-    public function createText($content) {
-        $json = new Json($content);
-        return $json->json($content);
-    }
-
-    public function createFormatter()
-    {
-        return new JsonFormatter();
-    }
-}
-
-
-class HtmlFactory extends AbstractFactory
-{
-    public function createText($content) {
-        $html = new Html($content);
-        return $html->wrapTag($content, 'h1');
-    }
-
-    public function createFormatter()
-    {
-        return new HtmlFormatter();
-    }
-}
-
-
 abstract class Text
 {
     public function __construct($content)
@@ -71,6 +36,7 @@ class Html extends Text
     }
 }
 
+
 interface Formatter
 {
     public function format($text);
@@ -94,6 +60,40 @@ class HtmlFormatter implements Formatter
     }
 }
 
+
+abstract class AbstractFactory
+{
+    abstract public function createText($content);
+    abstract public function createFormatter();
+}
+
+
+class JsonFactory extends AbstractFactory
+{
+    public function createText($content) {
+        $json = new Json($content);
+        return $json->json($content);
+    }
+
+    public function createFormatter()
+    {
+        return new JsonFormatter();
+    }
+}
+
+
+class HtmlFactory extends AbstractFactory
+{
+    public function createText($content) {
+        $html = new Html($content);
+        return $html->wrapTag($content, 'h1');
+    }
+
+    public function createFormatter()
+    {
+        return new HtmlFormatter();
+    }
+}
 
 $json = new JsonFactory();
 $text = $json->createText('УРА');

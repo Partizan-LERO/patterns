@@ -26,8 +26,9 @@ class Prototype
 }
 
 $prototype = new Prototype('Original Object');
-    for ($i = 0; $i < 5; $i++) {
-        $proto = clone $prototype;
-        $proto->setName($i);
-        $proto->getName();
+
+for($i = 0; $i < 5; $i++) {
+    $proto = clone $prototype;
+    $proto->setName($i);
+    $proto->getName();
 }

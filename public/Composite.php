@@ -1,5 +1,5 @@
 <?php
-    ini_set('display_errors', 1);
+
 interface Webmaster
 {
     public function login();
@@ -15,27 +15,27 @@ class GoogleWebmaster implements Webmaster
 
     public function login()
     {
-        echo 'Google login';
+        echo "Google login\n";
     }
 
     public function logout()
     {
-        echo 'Google logout';
+        echo "Google logout\n";
     }
 
     public function addSite($site)
     {
-        echo 'Google: site ' . $site . ' was added';
+        echo "Google: site " . $site . " was added\n";
     }
 
     public function removeSite($site)
     {
-        echo 'Google: site ' . $site . ' was removed';
+        echo 'Google: site ' . $site . " was removed\n";
     }
 
     public function getStatus($site)
     {
-        echo 'Google: site ' . $site . ' status: Verified';
+        echo 'Google: site ' . $site . " status: Verified\n";
     }
 
     public function getList()
@@ -43,10 +43,11 @@ class GoogleWebmaster implements Webmaster
         $array = [];
 
         for ($i = 0; $i < 15; $i++) {
-            $array[] = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);
+            $randomString = str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x))));
+            $array[] = substr($randomString,1,10);
         }
 
-        echo "Google: sites:  \n" .implode(",\n", $array);
+        echo "\nGoogle sites:  \n" .implode(",\n", $array);
     }
 }
 
@@ -55,27 +56,27 @@ class YandexWebmaster implements Webmaster
 
     public function login()
     {
-        echo 'Yandex login';
+        echo "Yandex login\n";
     }
 
     public function logout()
     {
-        echo 'Yandex logout';
+        echo "Yandex logout\n";
     }
 
     public function addSite($site)
     {
-        echo 'Yandex: site ' . $site . ' was added';
+        echo 'Yandex: site ' . $site . " was added\n";
     }
 
     public function removeSite($site)
     {
-        echo 'Yandex: site ' . $site . ' was removed';
+        echo 'Yandex: site ' . $site . " was removed\n";
     }
 
     public function getStatus($site)
     {
-        echo 'Yandex: site ' . $site . ' status: Verified';
+        echo 'Yandex: site ' . $site . " status: Verified\n";
     }
 
     public function getList()
@@ -83,10 +84,11 @@ class YandexWebmaster implements Webmaster
         $array = [];
 
         for ($i = 0; $i < 15; $i++) {
-            $array[] = substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x)) )),1,10);
+            $randomString = str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil(10/strlen($x))));
+            $array[] = substr($randomString,1,10);
         }
 
-        echo "Yandex: sites:  \n" .implode(",\n", $array);
+        echo "\nYandex sites:  \n" .implode(",\n", $array);
     }
 }
 
@@ -147,13 +149,13 @@ $webmaster = new Webmasters();
 $webmaster->addWebmaster(new YandexWebmaster());
 $webmaster->addWebmaster(new GoogleWebmaster());
 $webmaster->login();
-echo "<br>";
+echo "\n<br>\n";
 $webmaster->add('http://sss57.ru');
-    echo "<br>";
+    echo "\n<br>\n";
 $webmaster->getStatus('http://sss57.ru');
-    echo "<br>";
+    echo "\n<br>\n";
 $webmaster->remove('http://sss57.ru');
-    echo "<br>";
+    echo "\n<br>\n";
 $webmaster->getList();
-    echo "<br>";
+    echo "\n<br>\n";
 $webmaster->logout();
