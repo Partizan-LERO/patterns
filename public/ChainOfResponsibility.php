@@ -15,8 +15,10 @@ abstract class Account
         if ($this->canPay($amountToPay)) {
             echo 'Paid via ' . get_called_class();
         } else {
-            echo "Can not pay";
-            $this->successor->pay($amountToPay);
+            echo "Can not pay via " . get_called_class() . "\n";
+            if ($this->successor) {
+                $this->successor->pay($amountToPay);
+            }
         }
     }
 
@@ -63,4 +65,4 @@ $bitcoin = new Bitcoin(300);
 $bank->setNext($paypal);
 $paypal->setNext($bitcoin);
 
-$bank->pay(131);
+$bank->pay(400);

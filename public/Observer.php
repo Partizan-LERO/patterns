@@ -47,8 +47,8 @@ class UserObserver implements SplObserver
 
     public function update(SplSubject $subject)
     {
-        echo "Hi, user {$this->name}! New job has been posted: " . $subject->job;
-        echo "<br>";
+        echo "Hi, user {$this->name}! New job has been posted: " . $subject->job . "\n";
+        echo "<br>\n";
         $this->changedUsers[] = clone $subject;
     }
 
@@ -67,4 +67,7 @@ class UserObserver implements SplObserver
     $job->attach($observer2);
     $job->attach($observer3);
     $job->addJob('Middle PHP Developer');
+
+    $job = new Job();
+    $job->attach($observer3);
     $job->addJob('Middle Fullstack Developer');

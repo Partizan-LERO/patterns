@@ -30,24 +30,24 @@ class Facebook extends AbstractMessenger
 {
     public function login(string $userName, string $password)
     {
-        echo 'FB login with name: ' . $userName . ' and password: ' . $password . "<br>";
+        echo 'FB login with name: ' . $userName . ' and password: ' . $password . "<br>\n";
        return $this->checkPermissions();
     }
 
     public function checkPermissions()
     {
-        echo "Check permissions" . "<br>";
+        echo "Check permissions" . "<br>\n";
         return true;
     }
 
     public function logout()
     {
-        echo 'FB logout' . "<br>";
+        echo 'FB logout' . "<br>\n";
     }
 
     public function sendMessage($message)
     {
-        echo 'Sent a message: ' . $message . "<br>";
+        echo 'Sent a message: ' . $message . "<br>\n";
     }
 }
 
@@ -56,29 +56,29 @@ class Vk extends AbstractMessenger
 {
     public function login(string $userName, string $password)
     {
-        echo 'Vk login with name: ' . $userName . ' and password: ' . $password . "<br>";
+        echo 'Vk login with name: ' . $userName . ' and password: ' . $password . "<br>\n";
         $this->getToken();
         return true;
     }
 
     public function getToken()
     {
-        echo "Get VK token" . "<br>";
+        echo "Get VK token" . "<br>\n";
     }
 
     public function logout()
     {
-        echo 'Vk logout' . "<br>";
+        echo 'Vk logout' . "<br>\n";
     }
 
     public function sendMessage($message)
     {
-        echo 'Sent a message: ' . $message . "<br>";
+        echo 'Sent a message: ' . $message . "<br>\n";
     }
 }
 
 $vkmessenger = new Vk('sergey', '123456');
 $vkmessenger->post('Test post');
-echo "<br>";
+echo "<br>\n";
 $fbmessenger = new Facebook('sergey', '123456');
 $fbmessenger->post('Fb test message');
